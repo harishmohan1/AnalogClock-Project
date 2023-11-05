@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'analog_clock.css' %}" />
+    <script>
+        var csrf_token = "{{ csrf_token }}";
+    </script>
+</head>
+<body>
+    <!-- Your map will be displayed here -->
+    <div id="world-map" style="height: 700px;"></div>
+    <div id="analog-clock">
+        <div class="clock-face">
+            <!-- Clock hands -->
+            <div class="clock-hand hour-hand"></div>
+            <div class="clock-hand minute-hand"></div>
+            <div class="clock-hand second-hand"></div>
+    
+            <!-- Clock numbers 
+            <div class="clock-numbers number-1">1</div>
+            <div class="clock-numbers number-2">2</div>
+            <div class="clock-numbers number-3">3</div>
+            <div class="clock-numbers number-4">4</div>
+            <div class="clock-numbers number-5">5</div>
+            <div class="clock-numbers number-6">6</div>
+            <div class="clock-numbers number-7">7</div>
+            <div class="clock-numbers number-8">8</div>
+            <div class="clock-numbers number-9">9</div>
+            <div class="clock-numbers number-10">10</div>
+            <div class="clock-numbers number-11">11</div>
+            <div class="clock-numbers number-12">12</div>-->
+        </div>
+    </div>
+    <!-- Include Leaflet and your custom JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!--<script src="https://unpkg.com/leaflet@1.7.1/dist/locale/en.js"></script>-->
+    <script src="{% static 'custom.js' %}"></script>
+    
+    
+</body>
+</html>

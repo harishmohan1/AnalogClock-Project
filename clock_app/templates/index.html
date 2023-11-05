@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'analog_clock.css' %}" />
+    <script>
+        var csrf_token = "{{ csrf_token }}";
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .clock {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .click-message {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>World Clock</h1>
+        <div class="clock">
+            <p>New York: <span id="new-york-clock">Loading...</span></p>
+        </div>
+        <div class="clock">
+            <p>London: <span id="london-clock">Loading...</span></p>
+        </div>
+        <div class="clock">
+            <p>Tokyo: <span id="tokyo-clock">Loading...</span></p>
+        </div>
+        <div class="clock">
+            <p>Sydney: <span id="sydney-clock">Loading...</span></p>
+        </div>
+        <div class="click-message" id="click-message">Click anywhere to explore more places</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set clock values after loading
+            document.getElementById('new-york-clock').textContent = getCurrentTime("America/New_York");
+            document.getElementById('london-clock').textContent = getCurrentTime("Europe/London");
+            document.getElementById('tokyo-clock').textContent = getCurrentTime("Asia/Tokyo");
+            document.getElementById('sydney-clock').textContent = getCurrentTime("Australia/Sydney");
+        });
+
+        document.getElementById('click-message').addEventListener('click', function () {
+            window.location.href = "/worldmap/";
+        });
+
+        function getCurrentTime(timezone) {
+            const options = { timeZone: timezone, hour: '2-digit', minute: '2-digit' };
+            return new Date().toLocaleTimeString([], options);
+        }
+    </script>
+</body>
+</html>

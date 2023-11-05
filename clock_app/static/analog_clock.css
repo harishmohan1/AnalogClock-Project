@@ -1,0 +1,98 @@
+/* Custom styles for the analog clock */
+#analog-clock {
+    position: absolute;
+    width: 100px; /* Adjust the width and height for your desired size */
+    height: 100px;
+    border: 5px solid #333; /* Adjust border width and color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    z-index: 1000;
+    margin: 0 auto; /* Center the clock horizontally */
+    display: flex; /* Center the clock vertically */
+    justify-content: center;
+    align-items: center;
+    /*overflow: hidden; /* Clip the clock hands to prevent them from extending beyond the clock face */
+    background-image: url(clckdig.png); /* Replace this with the URL of your clock background image */
+    background-color: grey;
+    /*background-position: center;*/
+    background-size: cover;
+    display: none;
+  }
+  
+  .clock-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Apply the features of the `.clock-hand` class to the `.hour-hand`, `.minute-hand`, and `.second-hand` classes */
+  .clock-hand {
+    position: absolute;
+    bottom: 50%; /* Position the hands at the bottom of the clock */
+    left: 50%; /* Position the hands at the center horizontally */
+    transform-origin: 50% 100%;
+    
+  }
+  
+  /* Additional features */
+  /* You can add additional features to the clock hands here, such as width, height, and border-radius */
+  .second-hand {
+    width: 1px; /* Adjust the width of the second hand */
+    height: 45%; /* Adjust the length of the second hand */
+    z-index: 3; /* Ensure the second hand is on top */
+    background-color: red; /* Adjust the color of the second hand */
+    transform: rotate(0deg);
+    /* Apply animation with a duration of 60 seconds and linear timing function */
+    animation: rotateSecondHand 60s linear infinite;
+}
+
+/* Define the animation */
+@keyframes rotateSecondHand {
+    100% {
+        /* Rotate the second hand by 360 degrees to complete one full rotation in 60 seconds */
+        transform: rotate(360deg);
+    }
+}
+  
+  .minute-hand {
+    width: 2px; /* Adjust the width of the minute hand */
+    height: 40%; /* Adjust the length of the minute hand */
+    z-index: 2; /* Layer below the second hand */
+    background-color: green; /* Adjust the color of the minute hand */
+  }
+  
+  .hour-hand {
+    width: 3px; /* Adjust the width of the hour hand */
+    height: 30%; /* Adjust the length of the hour hand */
+    z-index: 1; /* Layer below both minute and second hands */
+    background-color: blue; /* Adjust the color of the hour hand */
+  }
+  
+  .clock-numbers {
+    display: none;
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+    /* Align the clock numbers correctly */
+    .number-1 { top: 0; left: 50%; }
+    .number-2 { top: 0; left: 80%; }
+    .number-3 { top: 25%; left: 85%; }
+    .number-4 { top: 50%; left: 80%; }
+    .number-5 { top: 50%; left: 50%; }
+    .number-6 { top: 50%; left: 20%; }
+    .number-7 { top: 25%; left: 15%; }
+    .number-8 { top: 0; left: 20%; }
+    .number-9 { top: 0; left: 50%; }
+    .number-10 { top: 25%; left: 15%; }
+    .number-11 { top: 50%; left: 20%; }
+    .number-12 { top: 50%; left: 50%; }
